@@ -9,16 +9,21 @@
       </SearchBar>
       <!-- 表格 -->
       <TableList :loading="flags.loading" :dataList="dataList" align="center">
-        <el-table-column  type="index" label="序号" width="80"></el-table-column>
-        <el-table-column  prop="imgUrl" label="图片地址" min-width="180"></el-table-column>
-        <el-table-column  prop="imgUrl" label="图片预览" min-width="100">
+        <el-table-column  align="center" type="index" label="序号" width="80"></el-table-column>
+        <el-table-column  align="center" prop="imgUrl" label="图片预览" min-width="100">
           <template slot-scope="scope">
-            <img class="preview-img" :src="scope.row.imgUrl" alt="">
+            <img class="preview-img" :src="Contants.BASE_IMG_URL + scope.row.imgUrl" alt>
           </template>
         </el-table-column>
+        <el-table-column  align="center" prop="imgUrl" label="完整地址" min-width="180">
+          <template slot-scope="scope">
+            {{Contants.BASE_IMG_URL + scope.row.imgUrl}}
+          </template>
+        </el-table-column>
+        <el-table-column  align="center" prop="imgUrl" label="地址" min-width="180"></el-table-column>
       </TableList>
     </div>
-    <edit-modal ref='uploadModal' @submit-edit='getImgList_handler'></edit-modal>
+    <edit-modal ref="uploadModal" @submit-edit="getImgList_handler"></edit-modal>
   </div>
 </template>
 
@@ -73,7 +78,7 @@ export default {
     getImgList_handler({ imgList }) {
       console.log(imgList, '-----imgList')
       imgList.map(imgUrl => {
-          this.dataList.push({ imgUrl: Contants.BASE_IMG_URL + imgUrl })
+        this.dataList.push({ imgUrl })
       })
     },
     /**
@@ -101,9 +106,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .preview-img{
-    width: 80px;
-    left: 80px;
-  }
+.preview-img {
+  width: 80px;
+  left: 80px;
+}
 </style>
 
