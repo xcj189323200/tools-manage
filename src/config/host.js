@@ -1,11 +1,11 @@
 /**
  * Created by Cray on 2017/1/5.
  */
-const _ENV = process.env._ENV
+const _ENV = process.env.VUE_APP_ENV
 let API_HOST
 let ADMIN_HOST
 
-console.log(process.env._ENV, ' process.env._ENV')
+console.log(process.env.VUE_APP_ENV, ' process.env.VUE_APP_ENV')
 switch (_ENV) {
 	case 'production':
 		API_HOST = '//api.crofys.cn/api/'
