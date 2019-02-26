@@ -7,11 +7,13 @@ import axios from './axios'
 import Utils from '@utils/utils'
 
 import CommonApi from './modules/common' // 用户接口
+import HouseApi from './modules/house' // 用户接口
 
 export default Object.assign(
   {},
   Host,
   CommonApi,
+  HouseApi,
   {
     // 菜单接口 /api/sys/menu/menuList
     menuList(params) {

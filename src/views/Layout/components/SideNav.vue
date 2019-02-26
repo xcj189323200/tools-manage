@@ -20,28 +20,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import NavContants from '@contants/nav.js'
 export default {
   data() {
     return {
       subMenuActive: [], // 一级菜单选中的菜单
       childMenuActive: '', // 二级菜单选中的菜单
       isCollapse: true,
-      datas: [
-        {
-          groupName: '设置',
-          path: 'set',
-          children: [
-            {
-              urlLink: 'set-upload',
-              permissionName: '图片上传'
-            },
-            {
-              urlLink: 'set-test',
-              permissionName: '测试'
-            }
-          ]
-        }
-      ]
+      datas: NavContants
     }
   },
   components: {

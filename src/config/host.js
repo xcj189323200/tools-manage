@@ -7,11 +7,11 @@ let ADMIN_HOST
 
 switch (_ENV) {
 	case 'production':
-		API_HOST = '//dpmanagement.dianjia001.com/api/'
+		API_HOST = '//api.crofys.cn/api/'
 		ADMIN_HOST = 'http://auth.dianjia001.com'
 		break
 	case 'testing':
-		API_HOST = '//dpmanagement.17dianjia.net/api/'
+		API_HOST = '//api.crofys.cn/api/'
 		ADMIN_HOST = 'http://auth.17dianjia.net'
 		break
 	default :

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import SetUp from './modules/set'
+import House from './modules/house'
 import Layout from '../views/Layout/index'
 
 Vue.use(Router)
@@ -24,6 +25,7 @@ export default new Router({
       ]
     },
     ...SetUp,
+    ...House,
     {
       path: '*', // 其他页面，强制跳转到登录页面
       name: '*',
