@@ -34,6 +34,10 @@ export default {
             {
               urlLink: 'set-upload',
               permissionName: '图片上传'
+            },
+            {
+              urlLink: 'set-test',
+              permissionName: '测试'
             }
           ]
         }

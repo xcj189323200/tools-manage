@@ -15,7 +15,7 @@ switch (_ENV) {
 		ADMIN_HOST = 'http://auth.17dianjia.net'
 		break
 	default :
-		API_HOST = '//dpmanagement.17dianjia.net/api/'
+		API_HOST = '//127.0.0.1:7001/api/'
 		ADMIN_HOST = 'http://auth.17dianjia.net'
 }
 export default {

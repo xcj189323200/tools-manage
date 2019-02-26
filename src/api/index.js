@@ -6,12 +6,12 @@ import Host from '../config/host'
 import axios from './axios'
 import Utils from '@utils/utils'
 
-import ApiSetUp from './modules/ApiSetUp' // 用户接口
+import CommonApi from './modules/common' // 用户接口
 
 export default Object.assign(
   {},
   Host,
-  ApiSetUp,
+  CommonApi,
   {
     // 菜单接口 /api/sys/menu/menuList
     menuList(params) {
