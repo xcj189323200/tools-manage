@@ -5,6 +5,7 @@ const _ENV = process.env._ENV
 let API_HOST
 let ADMIN_HOST
 
+console.log(process.env._ENV, ' process.env._ENV')
 switch (_ENV) {
 	case 'production':
 		API_HOST = '//api.crofys.cn/api/'
