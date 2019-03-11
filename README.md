@@ -1,7 +1,8 @@
 # 运营分析平台
 
-## 项目git地址
-https://github.com/xcj189323200/tools-manage.git
+## 项目在线预览地址
+[http://tools.crofys.cn/](http://tools.crofys.cn/)
+
 
 ## 注意事项
 
