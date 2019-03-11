@@ -1,6 +1,7 @@
 <template>
   <div id="House">
     <div class="container">
+      <!-- 脚手架 （vue-cli） -->
       <!-- 搜索头部 -->
       <SearchBar class="search_header">
         <div>
@@ -20,7 +21,7 @@
         </div>
       </SearchBar>
       <!-- 表格 -->
-      <TableList :loading="flags.loading" :dataList="dataList" :size="params.limit" :page="params.page" :total="totalElements" @pageChange="pageChange_handler">
+      <TableList :loading="flags.loading" :dataList="dataList" :size="params.limit" :page="params.page" :total="totalElements" @pageChange="pageChange_handler"  layout="total, prev, pager, next">
         <el-table-column type="index" width="50" label="序号" fixed="left">
           <template slot-scope="scope">{{(params.page - 1) * params.limit + scope.$index + 1}}</template>
         </el-table-column>

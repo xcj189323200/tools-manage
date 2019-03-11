@@ -1,29 +1,10 @@
 <template>
   <div id="tableList">
-    <el-table
-      :data="dataList"
-      border
-      stripe
-      style="width: 100%"
-      :max-height="maxHeight"
-      v-loading="loading"
-      element-loading-text="拼命加载中"
-      element-loading-spinner="el-icon-loading"
-      element-loading-background="rgba(0, 0, 0, 0.8)"
-      @sort-change="sortChange"
-      id="outTable"
-    >
+    <el-table :data="dataList" border stripe style="width: 100%" :max-height="maxHeight" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)" @sort-change="sortChange" id="outTable">
       <slot></slot>
     </el-table>
     <div class="page_box">
-      <el-pagination
-        background
-        layout="prev, pager, next"
-        @current-change='pageChange_handler'
-        :current-page='page'
-        :page-size.sync='size'
-        :total="total"
-      ></el-pagination>
+      <el-pagination background :layout="layout" @current-change="pageChange_handler" :current-page="page" :page-size.sync="size" :total="total"></el-pagination>
     </div>
   </div>
 </template>
@@ -37,7 +18,34 @@
  * @Description: table 二次封装
  */
 export default {
-  props: ['loading', 'dataList', 'size', 'total', 'page'],
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    dataList: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    size: {
+      type: Number,
+      default: 20
+    },
+    total: {
+      type: Number,
+      default: 0
+    },
+    page: {
+      type: Number,
+      default: 0
+    },
+    layout: {
+      type: String,
+      default: 'prev, pager, next'
+    }
+  },
   components: {},
   data() {
     return {
@@ -59,7 +67,7 @@ export default {
       this.$emit('sort-change', column)
     }
   },
-  created() {},
+  created() { },
   watch: {
     page() {
       console.log(this.page, 'page------')

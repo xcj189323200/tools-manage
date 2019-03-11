@@ -20,9 +20,16 @@ export default new Router({
           name: 'home',
           path: 'home',
           meta: { title: '首页', keepAlive: true },
-          component: () => import(/* webpackChunkName: "home" */'../views/Home/index.vue')
+          component: () =>
+            import(/* webpackChunkName: "home" */ '../views/Home/index.vue')
         }
       ]
+    },
+    {
+      path: '/category',
+      name: 'CategoryList',
+      component: () =>
+        import(/* webpackChunkName: "CategoryList" */ '../views/Category/list.vue')
     },
     ...SetUp,
     ...House,
