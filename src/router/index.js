@@ -31,6 +31,12 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "CategoryList" */ '../views/Category/list.vue')
     },
+    {
+      path: '/testlist',
+      name: 'testlist',
+      component: () =>
+        import(/* webpackChunkName: "testlist" */ '../views/Category/testlist.vue')
+    },
     ...SetUp,
     ...House,
     {
