@@ -22,6 +22,13 @@ export default new Router({
           meta: { title: '首页', keepAlive: true },
           component: () =>
             import(/* webpackChunkName: "home" */ '../views/Home/index.vue')
+        },
+        {
+          name: 'ethart',
+          path: 'ethart',
+          meta: { title: '图表', keepAlive: true },
+          component: () =>
+            import(/* webpackChunkName: "ethart" */ '../views/Ethart/index.vue')
         }
       ]
     },

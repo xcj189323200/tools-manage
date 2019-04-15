@@ -8,9 +8,11 @@ import './registerServiceWorker'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@css/main.scss'
+import echarts from 'echarts'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = api
+Vue.prototype.$echarts = echarts
 Vue.use(ElementUI)
 
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))

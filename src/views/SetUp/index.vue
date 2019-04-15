@@ -2,7 +2,7 @@
   <div id="home">
     {{percent}}
     <input type="file" @change="chooseImg_changeHandler">
-    <!-- <el-button class="pan-btn blue-btn">上传</el-button> -->
+    <el-button class="pan-btn blue-btn">上传</el-button>
   </div>
 </template>
 

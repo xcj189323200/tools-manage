@@ -1,5 +1,15 @@
 export default [
   {
+    groupName: '图表',
+    path: 'ethart',
+    children: [
+      {
+        urlLink: 'ethart',
+        permissionName: '图表'
+      }
+    ]
+  },
+  {
     groupName: '房屋',
     path: 'house',
     children: [
