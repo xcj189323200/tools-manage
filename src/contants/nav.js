@@ -1,5 +1,15 @@
 export default [
   {
+    groupName: '爬虫',
+    path: 'crawler',
+    children: [
+      {
+        urlLink: 'crawler',
+        permissionName: '爬虫'
+      }
+    ]
+  },
+  {
     groupName: '图表',
     path: 'ethart',
     children: [

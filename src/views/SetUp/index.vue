@@ -49,7 +49,7 @@ export default {
     }
   },
   async created() {
-    console.log('这是created home')
+    console.log('这是created test', this.$route)
     const res = await this.$http.getOssToken()
     if (res.code === 200) {
       const { data } = res

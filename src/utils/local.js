@@ -2,41 +2,41 @@
  * Created by Cray on 2016/11/7.
  */
 
-const localStorage = window.localStorage || {};
+const localStorage = window.localStorage || {}
 
 class Local {
     static setItem(key, data) {
-        if (Object.prototype.toString.apply(data) == "[object Object]") {
-            data = JSON.stringify(data);
+        if (Object.prototype.toString.apply(data) == '[object Object]') {
+            data = JSON.stringify(data)
         }
-        localStorage[key] = data;
+        localStorage[key] = data
     }
 
     static getItem(key) {
-        let value = localStorage[key] || null;
+        let value = localStorage[key] || null
         if (value) {
             try {
-                value = JSON.parse(value);
+                value = JSON.parse(value)
             } catch (e) {
-                console.error(e);
+                console.error(e)
             }
         }
-        return value;
+        return value
     }
     static removeItem(key) {
         if (key) {
             try {
-                localStorage.removeItem(key);
+                localStorage.removeItem(key)
             } catch (e) {
-                console.error(e);
+                console.error(e)
             }
         }
     }
     static clear() {
         try {
-            localStorage.clear();
+            localStorage.clear()
         } catch (e) {
-            console.error(e);
+            console.error(e)
         }
     }
     /**
@@ -46,14 +46,14 @@ class Local {
      * @return {String}
      */
     static getCookie(name) {
-        var arr = document.cookie.replace(/\s/g, "").split(";");
+        var arr = document.cookie.replace(/\s/g, '').split(';')
         for (var i = 0; i < arr.length; i++) {
-            var tempArr = arr[i].split("=");
+            var tempArr = arr[i].split('=')
             if (tempArr[0] == name) {
-                return decodeURIComponent(tempArr[1]);
+                return decodeURIComponent(tempArr[1])
             }
         }
-        return "";
+        return '';
     }
     /**
      *
@@ -62,7 +62,7 @@ class Local {
      */
     static removeCookie(name) {
         // 设置已过期，系统会立刻删除cookie
-        this.setCookie(name, "1", -1);
+        this.setCookie(name, '1', -1)
     }
     /**
      *
@@ -72,10 +72,10 @@ class Local {
      * @param {Number} days
      */
     static setCookie(name, value, days) {
-        var date = new Date();
-        date.setDate(date.getDate() + days);
-        document.cookie = name + "=" + value + ";expires=" + date;
+        var date = new Date()
+        date.setDate(date.getDate() + days)
+        document.cookie = name + '=' + value + ';expires=' + date
     }
 }
 
-export default Local;
+export default Local

@@ -9,6 +9,9 @@ import Utils from '@utils/utils'
 import CommonApi from './modules/common' // 用户接口
 import HouseApi from './modules/house' // 用户接口
 import CategoryApi from './modules/category' // 用户接口
+import WorkApi from './modules/work' // 用户接口
+import CrawlerApi from './modules/crawler' // 用户接口
+// import Qs from 'qs'
 
 export default Object.assign(
   {},
@@ -16,6 +19,8 @@ export default Object.assign(
   CommonApi,
   HouseApi,
   CategoryApi,
+  WorkApi,
+  CrawlerApi,
   {
     // 菜单接口 /api/sys/menu/menuList
     menuList(params) {
@@ -48,6 +53,9 @@ export default Object.assign(
         params,
         responseType,
         timeout: 15000
+        // paramsSerializer: function(params) {
+        //   return Qs.stringify(params, { arrayFormat: 'brackets' })
+        // }
       })
     },
     delete({ url, headers = this.getHeaders(), params = {} }) {

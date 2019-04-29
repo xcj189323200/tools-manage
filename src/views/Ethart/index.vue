@@ -1,141 +1,162 @@
 <template>
-  <div>
-    <ethart :options="optionsA"></ethart>
-    <ethart :options="options"></ethart>
+  <div class="work">
+    <div class="work_search">
+      <el-select v-model="params.workType" placeholder="请选择">
+        <el-option v-for="item in optionsList.workList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+      </el-select>
+      <span class="work_search_total">共计 {{totals}} 条</span>
+    </div>
+    <div class="work_area">
+      <g-ethart :options="options"></g-ethart>
+    </div>
   </div>
 </template>
 <script>
-import Ethart from '@components/Common/Ethart.vue'
+import GEthart from '@components/Common/GEthart.vue'
 
 export default {
   components: {
-    Ethart
+    GEthart
   },
   data() {
     return {
-      optionsA: {
-        legend: {},
-        tooltip: {},
-        dataset: {
-          dimensions: [
-            { name: 'score' },
-            // 可以简写为 string，表示维度名。
-            'amount',
-            // 可以在 type 中指定维度类型。
-            { name: 'product', type: 'ordinal' }
-          ],
-          source: [
-            ['product', '2012', '2013', '2014', '2015'],
-            ['Matcha Latte', 41.1, 30.4, 65.1, 53.3],
-            ['Milk Tea', 86.5, 92.1, 85.7, 83.1],
-            ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4]
-          ]
-        },
-        xAxis: [
-          { type: 'category', gridIndex: 0 },
-          { type: 'category', gridIndex: 1 }
-        ],
-        yAxis: [
-          { gridIndex: 0 },
-          { gridIndex: 1 }
-        ],
-        grid: [
-          { bottom: '55%' },
-          { top: '55%' }
-        ],
-        series: [
-          // 这几个系列会在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
-          { type: 'bar', seriesLayoutBy: 'row' },
-          { type: 'bar', seriesLayoutBy: 'row' },
-          { type: 'bar', seriesLayoutBy: 'row' },
-          // 这几个系列会在第二个直角坐标系中，每个系列对应到 dataset 的每一列。
-          { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
-          { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
-          { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 },
-          { type: 'bar', xAxisIndex: 1, yAxisIndex: 1 }
+      totals: 0,
+      params: {
+        workType: 'WEB'
+      },
+      optionsList: {
+        workList: [
+          {
+            label: 'web 前端',
+            value: 'WEB'
+          },
+          {
+            label: 'UI',
+            value: 'UI'
+          }
+          // {
+          //   label: '其他',
+          //   value: 'OTHER',
+          //   url: ''
+          // }
         ]
       },
       options: {
-        title: {
-          link: '//www.baidu.com',
-          text: 'ECharts 入门示例'
-        },
-        tooltip: {},
-        toolbox: {
-          feature: {
-            saveAsImage: {
-              type: 'png'
-            }
-          }
-        },
-        legend: { // 图表的 菜单项
-          data: [{ // 菜单项展示效果
-            name: '2015',
-            // 强制设置图形为圆。
-            icon: 'circle',
-            // 设置文本为红色
-            textStyle: {
-              color: 'red'
-            }
-          }, '2016', '2017'],
-          tooltip: {
-            show: true
-          },
-          selected: {
-            // 选中'系列1'
-            '2015': true,
-            // 不选中'系列2'
-            '2016': false
-          },
-          formatter: (name) => {
-            console.log(this, '2222')
-            // return echarts.format.truncateText(name, 40, '14px Microsoft Yahei', '…')
-          }
-        },
-        xAxis: {
-          type: 'category'
-          // data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-        },
-        yAxis: {},
-        dataset: {
-          // 提供一份数据。
-          source: [
-            { product: 'Matcha Latte', count: 823, score: 95.8 },
-            { product: 'Milk Tea', count: 235, score: 81.4 },
-            { product: 'Cheese Cocoa', count: 1042, score: 91.2 },
-            { product: 'Walnut Brownie', count: 988, score: 76.9 }
-          ]
-        },
-        series: [
-          // 这几个系列会在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
-          { type: 'bar', seriesLayoutBy: 'row' },
-          { type: 'bar', seriesLayoutBy: 'row' }
-          // { type: 'bar', seriesLayoutBy: 'row' }
-        ]
-        // series: [
-        //   // 这几个系列会在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
-        //   { type: 'bar', seriesLayoutBy: 'row' },
-        //   { type: 'bar', seriesLayoutBy: 'row' }
-        //   // { type: 'bar', seriesLayoutBy: 'row' }
-        // ]
-        // series: [
-        //   {
-        //     name: '销量',
-        //     type: 'bar',
-        //     data: [5, 20, 36, 10, 10, 20]
-        //   },
-        //   {
-        //     name: '品牌',
-        //     type: 'bar',
-        //     data: [5, 20, 36, 10, 10, 20]
-        //   }
-        // ]
+
       }
     }
   },
-  created() {
+  watch: {
+    'params.workType': {
+      handler(val) {
+        console.log('111')
+        this.init()
+      },
+      immediate: true
+    }
+  },
+  methods: {
+    async init() {
+      const { workType } = this.params
+      const res = await this.$http.getWorkList({ limit: 400, conditions: { work_type: workType } })
+      if (res.code === 200) {
+        const { data } = res
+        const _data = []
+        const _obj = {}
+        this.totals = data.length
+        data.map(k => {
+          const _area = k.area || '其他'
+          _obj[_area] = _obj[_area] || []
+          _obj[_area].push(k)
+        })
+        const legend = Object.keys(_obj)
+        legend.map(k => {
+          _data.push({
+            name: k,
+            value: _obj[k].length
+          })
+        })
+        this.init_chart(_data, legend)
+      }
+      console.log(res, '====res')
+    },
+    init_chart(data, legend) {
+      const { label } = this.optionsList.workList.filter(k => k.value === this.params.workType)[0] || {}
+      this.options = {
+        title: {
+          text: label
+        },
+        tooltip: {},
+        legend: {
+          orient: 'vertical',
+          x: 'right',
+          data: legend
+        },
+        series: [
+          // 这几个系列会在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
+          {
+            name: '工作区域',
+            type: 'pie',
+            radius: '55%',
+            // center: ['50%', '50%'],
+            label: {
+              normal: {
+                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                backgroundColor: '#eee',
+                borderColor: '#aaa',
+                borderWidth: 1,
+                borderRadius: 4,
+                rich: {
+                  a: {
+                    color: '#999',
+                    lineHeight: 22,
+                    align: 'center'
+                  },
+
+                  hr: {
+                    borderColor: '#aaa',
+                    width: '100%',
+                    borderWidth: 0.5,
+                    height: 0
+                  },
+                  b: {
+                    fontSize: 16,
+                    lineHeight: 33
+                  },
+                  per: {
+                    color: '#eee',
+                    backgroundColor: '#334455',
+                    padding: [2, 4],
+                    borderRadius: 2
+                  }
+                }
+              }
+            },
+            data
+          }
+        ]
+      }
+    }
+  },
+  async created() {
 
   }
 }
 </script>
+<style lang="scss" scoped>
+.work {
+  padding: 20px;
+  .work_search {
+    margin-bottom: 20px;
+    .work_search_total {
+      margin-left: 30px;
+    }
+  }
+  .work_area {
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+  }
+}
+</style>
 

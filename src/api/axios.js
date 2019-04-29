@@ -4,8 +4,18 @@
 import axios from 'axios'
 // import { API_HOST } from "../config";
 import _ from 'lodash'
+// import Qs from 'qs'
 
-axios.interceptors.request.use(
+const _axios = axios.create({
+  // headers:{'Content-Type': 'application/json'},
+  // transformRequest: [
+  //   data => {
+  //     // console.log(Qs.stringify(data), "====data")
+  //     return Qs.stringify(data)
+  //   }
+  // ]
+})
+_axios.interceptors.request.use(
   config => {
     return config
   },
@@ -14,7 +24,7 @@ axios.interceptors.request.use(
   }
 )
 
-axios.interceptors.response.use(
+_axios.interceptors.response.use(
   res => {
     let _data = null
     if (res.status === 200) {
@@ -41,6 +51,7 @@ axios.interceptors.response.use(
       case 401: {
         break
       }
+      case 404:
       case 405:
       case 500:
       default:
@@ -55,4 +66,4 @@ axios.interceptors.response.use(
   }
 )
 
-export default axios
+export default _axios

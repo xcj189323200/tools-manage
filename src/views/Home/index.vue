@@ -1,5 +1,7 @@
 <template>
-  <div id="home">首页
+  <div id="home">
+    首页
+    <button class="pan-btn blue-btn" @click="enter">点击</button>
     <!-- <button class="pan-btn blue-btn">点击</button>
     <button class="pan-btn light-blue-btn">你好哈哈哈</button>
     <button class="pan-btn pink-btn">你好哈哈哈</button>
@@ -21,7 +23,7 @@ export default {
   },
   methods: {
     enter() {
-      this.$router.replace({ path: '/set/operate/list' })
+      this.$router.replace({ name: 'set-test', params: { id: 3, name: '章三' } })
     },
     deal(n) {
       var i = ''

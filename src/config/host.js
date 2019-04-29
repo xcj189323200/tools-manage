@@ -16,8 +16,8 @@ switch (_ENV) {
 		ADMIN_HOST = 'http://auth.17dianjia.net'
 		break
 	default :
-    API_HOST = '//api.crofys.cn/api/'
-		// API_HOST = '//127.0.0.1:7001/api/'
+    // API_HOST = '//api.crofys.cn/api/'
+		API_HOST = '//127.0.0.1:7001/api/'
 		ADMIN_HOST = 'http://auth.17dianjia.net'
 }
 export default {

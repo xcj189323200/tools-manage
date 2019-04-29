@@ -29,6 +29,13 @@ export default new Router({
           meta: { title: '图表', keepAlive: true },
           component: () =>
             import(/* webpackChunkName: "ethart" */ '../views/Ethart/index.vue')
+        },
+        {
+          name: 'crawler',
+          path: 'crawler',
+          meta: { title: '爬虫', keepAlive: true },
+          component: () =>
+            import(/* webpackChunkName: "Crawler" */ '../views/Crawler/index.vue')
         }
       ]
     },

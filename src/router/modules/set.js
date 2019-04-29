@@ -16,7 +16,7 @@ export default [
       },
       {
         name: 'set-test',
-        path: 'test',
+        path: 'test/:id/:name',
         meta: { title: '测试图片上传', keepAlive: true },
         component: () => import(/* webpackChunkName: "set-test" */ '../../views/SetUp/index.vue')
       }
